@@ -1,6 +1,6 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
-set -e
+set -e -x
 has() {
   type "$1" > /dev/null 2>&1
   return $?
@@ -87,8 +87,8 @@ installGlobalDeps() {
             URL=https://raw.githubusercontent.com/cloud9ide/sdk-deps-win32
         else
             URL=https://raw.githubusercontent.com/vchavkov/c9-install
-        fi    
-        $DOWNLOAD $URL/master/install.sh | bash -x
+        fi
+        $DOWNLOAD $URL/master/install.sh | bash
     fi
 }
 
