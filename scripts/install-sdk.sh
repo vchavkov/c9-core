@@ -88,7 +88,7 @@ installGlobalDeps() {
         else
             URL=https://raw.githubusercontent.com/vchavkov/c9-install
         fi    
-        $DOWNLOAD $URL/master/install.sh | bash
+        $DOWNLOAD $URL/master/install.sh | bash -x
     fi
 }
 
