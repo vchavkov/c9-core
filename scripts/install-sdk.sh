@@ -73,7 +73,7 @@ updateCore() {
     cp './scripts/.#install-sdk-tmp.sh' ./scripts/install-sdk.sh
     git checkout -- ./scripts/install-sdk.sh
 
-    git remote add c9 https://github.com/c9/core 2> /dev/null || true
+    git remote add c9 https://github.com/vchavkov/c9-core 2> /dev/null || true
     git fetch c9
     git merge c9/master --ff-only || \
         echo "${yellow}Couldn't automatically update sdk core ${resetColor}"
