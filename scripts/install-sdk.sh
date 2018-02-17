@@ -1,7 +1,5 @@
 #!/bin/bash -ex
 
-su - vchavkov
-
 set -e -x
 has() {
   type "$1" > /dev/null 2>&1
@@ -121,5 +119,3 @@ echo -e "nak\n.gitignore" >  node_modules/.gitignore
 echo "Success!"
 
 echo "run '${yellow}node server.js -p 8080 -a :${resetColor}' to launch Cloud9"
-
-exit 0;
