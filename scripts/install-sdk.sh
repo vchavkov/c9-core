@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash -ex
+
+su - vchavkov
 
 set -e -x
 has() {
@@ -51,25 +53,25 @@ resetColor=$'\e[0m'
 updateNodeModules() {
     echo "${magenta}--- Running npm install --------------------------------------------${resetColor}"
     "$NPM" install --production
-    
+
     for i in $(git show HEAD:node_modules/); do
         if [ "$i" != tree ] && [ "$i" != "HEAD:node_modules/" ]; then
             [ -d node_modules/$i ] || git checkout HEAD -- node_modules/$i;
         fi
     done
     rm -f package-lock.json
-    
+
     echo "${magenta}--------------------------------------------------------------------${resetColor}"
 }
 
 updateCore() {
-    if [ "$NO_PULL" ]; then 
+    if [ "$NO_PULL" ]; then
         return 0;
     fi
-    
+
     # without this git merge fails on windows
     mv ./scripts/install-sdk.sh  './scripts/.#install-sdk-tmp.sh'
-    rm -f ./scripts/.install-sdk-tmp.sh 
+    rm -f ./scripts/.install-sdk-tmp.sh
     cp './scripts/.#install-sdk-tmp.sh' ./scripts/install-sdk.sh
     git checkout -- ./scripts/install-sdk.sh
 
@@ -119,3 +121,5 @@ echo -e "nak\n.gitignore" >  node_modules/.gitignore
 echo "Success!"
 
 echo "run '${yellow}node server.js -p 8080 -a :${resetColor}' to launch Cloud9"
+
+exit 0;
