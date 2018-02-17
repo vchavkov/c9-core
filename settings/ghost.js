@@ -62,11 +62,11 @@ module.exports = function(manifest, installPath) {
         installPath: installPath,
         correctedInstallPath: correctedInstallPath,
         staticPrefix: "/static",
-        projectUrl: "/workspace",
-        ideBaseUrl: "http://c9.io",
+        projectUrl: "/",
+        ideBaseUrl: "http://localhost:8185",
         previewUrl: "/preview",
-        dashboardUrl: "https://c9.io/dashboard.html",
-        accountUrl: "https://c9.io/account",
+        dashboardUrl: "http://localhost:8185/dashboard.html",
+        accountUrl: "http://localhost:8185/account",
         apiUrl: "/api",
         homeUrl: "/home",
         collab: false,
@@ -82,7 +82,7 @@ module.exports = function(manifest, installPath) {
         cdn: {
             version: "standalone",
             cacheDir: __dirname + "/../build",
-            compress: false,
+            compress: true,
             baseUrl: ""
         },
         mount: {
