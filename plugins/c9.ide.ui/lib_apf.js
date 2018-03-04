@@ -96,7 +96,7 @@ define(["require", "module", "exports", "./lib/menu/menu", "./lib/crypto",
 /** 
  * @event load          Fires after the application is loaded.
  */
- apf = {
+var apf = window.apf = {
     getPlugin: function(name) {
         return apf.nameserver.get("all", name);
     },
@@ -168,6 +168,9 @@ define(["require", "module", "exports", "./lib/menu/menu", "./lib/crypto",
     browserDetect: function(){
         if (this.$bdetect)
             return;
+        
+        // remove non-standard window.event
+        try { delete window.event } catch(e) {}
         
         /* Browser -  platform and feature detection, based on prototype's and mootools 1.3.
          *
@@ -702,7 +705,6 @@ apf.Class.prototype = new (function(){
         for (i = 0, l = this.$bufferEvents.length; i < l; i++)
             this.addEventListener.apply(this, this.$bufferEvents[i]);
 
-        delete realAddEventListener;
         delete this.$initStack;
         delete this.$bufferEvents;
 
